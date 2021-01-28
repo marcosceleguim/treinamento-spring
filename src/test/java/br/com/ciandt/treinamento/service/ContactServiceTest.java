@@ -103,10 +103,10 @@ public class ContactServiceTest {
 
 	@Test
 	public void deveEditarContatoComSucesso() {
-		Contact contact = new Contact("name", "email", "phone");
+		Contact contact = new Contact("name", "phone", "email");
 		contact.setId(1);
 
-		Contact newContact = new Contact("newName", "newEmail", "newPhone");
+		Contact newContact = new Contact("newName", "newPhone", "newEmail");
 		newContact.setId(1);
 
 		when(repository.findById(1)).thenReturn(Optional.of(contact));
@@ -127,7 +127,7 @@ public class ContactServiceTest {
 	@Test
 	public void deveTentarEditarContatoInexistente() {
 
-		Contact newContact = new Contact("newName", "newEmail", "newPhone");
+		Contact newContact = new Contact("newName", "newPhone", "newEmail");
 		newContact.setId(1);
 
 		ResponseEntity<Contact> result = service.updateContact(newContact);
